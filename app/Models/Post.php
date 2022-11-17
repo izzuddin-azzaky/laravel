@@ -10,15 +10,16 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['category', 'author'];
 
     public function category()
         {
             return $this->belongsTo(category::class);
         }
 
-        public function user()
+        public function author()
         {
-            return $this->belongsTo(User::class);
+            return $this->belongsTo(User::class, 'user_id');
         }
      
 }
